@@ -1,0 +1,76 @@
+=opaque($num)
+  filter: unquote("alpha(opacity=#{$num})")
+  -moz-opacity: $num / 100
+  opacity: $num / 100
+  
+=v-grad($color_1, $color_2)
+  background-color: $color_2
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#{$color_1}), to(#{$color_2}))
+  background-image: -moz-linear-gradient(center top, #{$color_1} 0%, #{$color_2} 100%)
+
+=h-grad($color_1, $color_2)
+  background: $color_1
+  background: -webkit-gradient(linear, left top, right top, from(#{$color_1}), to(#{$color_2}))
+  background: -moz-linear-gradient(center left, #{$color_1} 0%, #{$color_2} 100%)
+
+=nudge($distance: 1px, $direction: left)
+  position: relative
+  #{$direction}: $distance
+
+=letterpress($color: white, $x: 1px, $y: 1px, $blur: 0px)
+  text-shadow: $color $x $y $blur
+
+=size($w, $h: $w)
+  display: block
+  width: $w
+  height: $h
+
+=linkify
+  background: transparent
+  font-weight: normal
+  text-decoration: underline
+  display: inline
+  padding: 0
+  border: 0
+
+=dl_horizontal($dt_width: 25%, $dd_width: 75%)
+  clear: both
+  overflow: none
+  float: left
+  width: 100%
+  dt, dd
+    float: left
+    clear: none
+    display: block
+  dt
+    width: $dt_width
+  dd
+    width: $dd_width
+
+.left-all
+  *
+    clear: none
+    float: left
+
+.align-right
+  text-align: right
+
+.float-right
+  float: right
+
+.relative
+  position: relative
+
+.hide
+  display: none
+
+.block
+  display: block
+
+.inline
+  display: inline
+
+.clear
+  clear: both
+  display: block
+  height: 1px

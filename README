@@ -1,0 +1,72 @@
+A grab bag of my most frequently used tools when designing layouts and forms with Sass
+
+h1. Mixins
+
+*+dl_horizontal($dt_width, $dd_width)*
+Definition lists where the dt's and dd's are floated next to each other. Perfect for a quick and readable attribute breakdown.
+
+*+h_grad($color_1, $color_2)*
+A simple horizontal CSS3 gradient where you don't need to define color stops, just two colors that you want to blend
+
+*+v_grad($color_1, $color_2)*
+Same as above but a vertical gradient
+
+*+letterpress($color)*
+Gives you that nice embossed effect on your fonts with pure CSS. Default color is white but you can pass any color as an argument
+
+*+linkify*
+Perfect for overriding links with block level styles (think buttons) so that they look and act like plain text links again
+
+*+nudge($distance, $direction)*
+Uses relative positioning to move elements in any desired direction (ie: nudge(2px,"left"))
+
+*+opaque(90)*
+Similar to compass' opacity mixin except tailored to my preference for using integers as opposed to floats
+
+*+size($width)*
+If you supply one argument it will take that length and apply it to both width and height for a perfect square. Two arguments (width,height) gets you a rectangle.
+
+There are also misc classes in the source that speak for themselves (.float-left, .clear, etc)
+
+h1. Simple Form Styling
+
+For use in tandem with the "SimpleForm Gem":http://github.com/plataformatec/simple_form
+
+This mini style framework is highly opinionated and built on the assumption that you always want your labels on top of your inputs (with the obvious exception of checkboxes and radio buttons) It also provides a flexible layout grid that has proven to be bulletproof for all browsers (yes even IE6 plays nice)
+
+It's quite naughty and the Semantics Police would surely arrest me for this, but I have found this to be the fastest way to grid a form up
+
+Example of one form row using Haml:
+
+<pre>
+  .20.a= f.input :title
+  .40=   f.input :first_name
+  .40.z= f.input :last_name
+</pre>
+
+That will give you a title field with a width of 20% and two more fields at 40% each. You will usually want them to add up to 100, if not you will need a clearing element:
+
+<pre>
+  .10.a= f.input :title
+  .20=   f.input :first_name
+  .20.z= f.input :last_name
+  .clear
+</pre>
+
+Notice I;ve added a class of "a" to the first input container and a class of "z" to the last one. This will ensure that the spacing between the inputs is always consistent, no matter how you resize the browser window.
+
+Of course this styling assumes that you are using DIVs as simple_form wrappers. You can put this in an initializer file:
+
+<pre>
+  SimpleForm.wrapper_tag = :div
+</pre>
+
+h1. RightJS UI Styling
+
+This is some basic styling for "RightJS's UI widgets":http://rightjs.org/ui. So far only Selectable is included, but that will change in the near future.
+
+h1. Note
+
+These libraries have been used successfully on 5 different projects and have not failed me yet. Having said that they are still quite experimental and recommended for people who are familiar with Sass.
+
+Enjoy!
